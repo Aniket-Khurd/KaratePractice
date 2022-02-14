@@ -15,9 +15,9 @@ Feature: Call Sceanrio API example
     * print randomString
     * def requestBody = read("file:src/test/resources/Payload/postapi.json")
     * set requestBody.email = randomString+'@sample.com'
-    
 
-  @tag1 @ignore
+  @ignore 
+  @tag1
   Scenario: Get request
     Given path "public/v1/users/"+userID
     And header Authorization = "Bearer "+tokenID

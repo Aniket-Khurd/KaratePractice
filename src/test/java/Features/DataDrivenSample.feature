@@ -34,21 +34,8 @@ Feature: Data driven sample feature
     When method POST
     Then status 201
     * print response
-    #* karate.Runner('file:src/test/java/Features/')
-    #* karate.call(read('file:src/test/java/Features'))
     * karate.call('file:src/test/java/Features/BeforeAfterScenarioAPI.feature')
-    * call read('CallScenarioAPI.feature@tag2')
-    #* def runAllFeature =
-      #"""
-      #function()
-      #{
-      #	var runAll = Java.type('com.test.runner.APIUtils');
-      #	var run = new runAll();
-      #	return run.allFeatureFilesRunner();
-      #	}
-      #"""
-      #* def start = runAllFeature()
-      #* print start
+    * call read('CallScenarioAPI.feature')
       
 
     Examples: 
