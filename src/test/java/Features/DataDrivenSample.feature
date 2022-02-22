@@ -1,4 +1,4 @@
-#@ignore
+
 Feature: Data driven sample feature
 
   Background: 
@@ -13,15 +13,8 @@ Feature: Data driven sample feature
       }
       """
 
-  #* def requestBody =
-  #"""
-  #{
-  #'name' : <name>,
-  #'gender' : <gender>,
-  #'status' : <status>
-  #}
-  #"""
-  #* set requestBody.email = randomString+'@sample.com'
+ # * def requestBody = read("file:src/test/resources/Payload/datadrivenrequest.json")
+ 
   Scenario Outline: 
     Given path "public/v1/users"
     * def requestBody =  {'name' : <name>,'gender' : <gender>,'status' : <status>}
@@ -29,14 +22,14 @@ Feature: Data driven sample feature
     * print randomString
     * set requestBody.email = randomString+'@sample.com'
     * print requestBody.email
+    * print requestBody
     And request requestBody
     And header Authorization = "Bearer "+tokenID
     When method POST
     Then status 201
     * print response
     * karate.call('file:src/test/java/Features/BeforeAfterScenarioAPI.feature')
-    * call read('CallScenarioAPI.feature')
-      
+    * call read('CallScenarioAPI.feature')  
 
     Examples: 
       | read('file:src/test/resources/datanew.csv') |
